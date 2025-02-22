@@ -1,8 +1,9 @@
 #include <windows.h>
 
-extern "C" __declspec(dllexport) void HelloWorld()
+extern "C" __declspec(dllexport) int ShowMessage(const char* message)
 {
-    MessageBox(NULL, "Hello, World!", "Hello", MB_OK);
+    int msgboxID = MessageBox(NULL, message, "Message", MB_YESNO | MB_ICONQUESTION);
+    return msgboxID;
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
