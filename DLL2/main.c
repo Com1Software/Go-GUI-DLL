@@ -1,14 +1,15 @@
 #include <windows.h>
 #include <stdio.h>
 
-typedef void (*say_hello_t)();
+typedef const char* (*show_message_t)(const char*);
 
 int main() {
     HINSTANCE hinstLib = LoadLibrary("hello.dll");
     if (hinstLib != NULL) {
-        say_hello_t say_hello = (say_hello_t) GetProcAddress(hinstLib, "say_hello");
-        if (say_hello != NULL) {
-            say_hello();
+        show_message_t show_message = (show_message_t) GetProcAddress(hinstLib, "show_message");
+        if (show_message != NULL) {
+            const char* result = show_message("Your custom message here!");
+            printf("%s\n", result);
         } else {
             printf("Could not locate the function.\n");
         }
