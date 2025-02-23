@@ -6,7 +6,7 @@ typedef const char* (*ShowMessageFunc)(const char*);
 
 int main() {
     // Load the DLL
-    HMODULE hModule = LoadLibrary("C:\\path_to_your_dll\\gui.dll");
+    HMODULE hModule = LoadLibrary("C:\\Go-GUI-DLL\\DLL1\\gui.dll");
     if (hModule == NULL) {
         std::cerr << "Failed to load DLL" << std::endl;
         return 1;
